@@ -1,0 +1,41 @@
+{
+  "name": "get_business_partner",
+  "title": "get_A_BusinessPartner",
+  "mcpServerOrdId": "sap.mcpbuilder:apiResource:business_partner_mcp_demo:v1",
+  "description": "Retrieve a single entity by its key from the A_BusinessPartner collection. Provide the BusinessPartner key to identify the specific entity.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["businesspartner"],
+    "properties": {
+      "businesspartner": {"title": "BusinessPartner", "type": "string", "maxLength": 10, "description": "Key property BusinessPartner"},
+      "select": {"title": "select", "description": "Comma-separated list of property names", "type": "string"},
+      "expand": {"title": "expand", "description": "OData $expand query option", "type": "string"}
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "BusinessPartner": {"maxLength": 10, "type": "string"},
+      "Customer": {"maxLength": 10, "type": ["string", "null"]},
+      "Supplier": {"maxLength": 10, "type": ["string", "null"]},
+      "BusinessPartnerFullName": {"maxLength": 81, "type": ["string", "null"]},
+      "BusinessPartnerName": {"maxLength": 81, "type": ["string", "null"]},
+      "BusinessPartnerUUID": {"type": ["string", "null"]},
+      "BusinessPartnerCategory": {"maxLength": 1, "type": ["string", "null"]},
+      "FirstName": {"maxLength": 40, "type": ["string", "null"]},
+      "LastName": {"maxLength": 40, "type": ["string", "null"]},
+      "OrganizationBPName1": {"maxLength": 40, "type": ["string", "null"]},
+      "SearchTerm1": {"maxLength": 20, "type": ["string", "null"]},
+      "CreationDate": {"type": ["string", "null"]},
+      "LastChangeDate": {"type": ["string", "null"]},
+      "BusinessPartnerIsBlocked": {"type": ["boolean", "null"]},
+      "IsMarkedForArchiving": {"type": ["boolean", "null"]},
+      "to_BusinessPartnerAddress": {"type": "array"},
+      "to_BusinessPartnerTax": {"type": "array"},
+      "to_BuPaIdentification": {"type": "array"},
+      "to_Customer": {"type": ["object", "null"]},
+      "to_Supplier": {"type": ["object", "null"]}
+    }
+  }
+}

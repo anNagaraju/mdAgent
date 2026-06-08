@@ -1,0 +1,52 @@
+{
+  "name": "list_business_partner",
+  "title": "list_A_BusinessPartner",
+  "mcpServerOrdId": "sap.mcpbuilder:apiResource:business_partner_mcp_demo:v1",
+  "description": "Retrieve a list of entities from the A_BusinessPartner collection in the api_business_partner service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+    "properties": {
+      "filter": {"title": "filter", "description": "OData $filter expression", "type": "string"},
+      "select": {"title": "select", "description": "Comma-separated list of property names", "type": "string"},
+      "orderby": {"title": "orderby", "description": "OData $orderby query option", "type": "string"},
+      "top": {"title": "top", "description": "Maximum number of entities to return", "type": "integer", "minimum": 0},
+      "skip": {"title": "skip", "description": "Number of results to skip for pagination", "type": "integer", "minimum": 0},
+      "expand": {"title": "expand", "description": "OData $expand query option", "type": "string"},
+      "inlinecount": {"title": "inlinecount", "type": "string", "enum": ["allpages", "none"]}
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "value": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "BusinessPartner": {"maxLength": 10, "type": "string"},
+            "Customer": {"maxLength": 10, "type": ["string", "null"]},
+            "Supplier": {"maxLength": 10, "type": ["string", "null"]},
+            "BusinessPartnerFullName": {"maxLength": 81, "type": ["string", "null"]},
+            "BusinessPartnerName": {"maxLength": 81, "type": ["string", "null"]},
+            "BusinessPartnerUUID": {"type": ["string", "null"]},
+            "BusinessPartnerCategory": {"maxLength": 1, "type": ["string", "null"]},
+            "FirstName": {"maxLength": 40, "type": ["string", "null"]},
+            "LastName": {"maxLength": 40, "type": ["string", "null"]},
+            "OrganizationBPName1": {"maxLength": 40, "type": ["string", "null"]},
+            "SearchTerm1": {"maxLength": 20, "type": ["string", "null"]},
+            "CreationDate": {"type": ["string", "null"]},
+            "LastChangeDate": {"type": ["string", "null"]},
+            "BusinessPartnerIsBlocked": {"type": ["boolean", "null"]},
+            "IsMarkedForArchiving": {"type": ["boolean", "null"]},
+            "to_BusinessPartnerAddress": {"type": "array"},
+            "to_BusinessPartnerTax": {"type": "array"},
+            "to_Customer": {"type": ["object", "null"]},
+            "to_Supplier": {"type": ["object", "null"]}
+          }
+        }
+      }
+    }
+  }
+}
