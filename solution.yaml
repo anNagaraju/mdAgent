@@ -1,0 +1,10 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: master-data-harmonization-0f920
+  version: 1.0.0
+  description: AI agent to detect, harmonize, and resolve duplicate master data records across SAP S/4HANA systems
+
+assets:
+  - ref: ./assets/master-data-harmonization-agent/asset.yaml
