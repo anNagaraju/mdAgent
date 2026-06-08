@@ -36,7 +36,7 @@ assets/master-data-harmonization-agent/
 │   └── util.py                               # Retry + tool name utilities
 ├── tests/ (7 test files)                      # 56 tests, 72% coverage
 └── test_report.json                           # Test execution report
-Key capabilities
+Key capabilities:
 Tool	Purpose
 profile_master_data	Score BP/Customer/Supplier completeness
 detect_duplicates	Fuzzy name + tax ID matching (rapidfuzz)
@@ -44,9 +44,8 @@ compute_golden_record	Resolve attribute conflicts, pick best values
 submit_merge_for_approval	Stage merge for human review
 approve_and_execute_merge	Execute approved merge via SAP API
 generate_harmonization_report	Audit trail of all merges
-Integrations
+Integrations:
 Business Partner MCP Server (sap.mcpbuilder:apiResource:business_partner_mcp_demo:v1) — list/get Business Partners, Customers, Suppliers from SAP S/4HANA
 Guardrail: Merges are never executed autonomously — explicit human approval always required
 Milestones instrumented (M1–M5)
 All 5 business steps emit [M#.achieved|missed] structured logs + OpenTelemetry spans for full observability.
-<img width="482" height="679" alt="image" src="https://github.com/user-attachments/assets/c3d2be77-ac2d-4049-8894-c913558ff8e8" />
