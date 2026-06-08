@@ -1,0 +1,233 @@
+{
+  "servers": {
+    "business-partner": {
+      "mcp_server_name": "sap.mcpbuilder:apiResource:business_partner_mcp_demo:v1",
+      "description": "S/4 Public Cloud Business Partner MCP Server Demo — provides read access to Business Partner, Customer, and Supplier entities from SAP S/4HANA via the API_BUSINESS_PARTNER OData service",
+      "tools": {
+        "list_business_partner": {
+          "description": "Retrieve a list of Business Partner entities from SAP S/4HANA",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {"type": "string", "description": "OData $filter expression"},
+              "select": {"type": "string", "description": "Comma-separated property names"},
+              "orderby": {"type": "string", "description": "OData $orderby expression"},
+              "top": {"type": "integer", "description": "Max records to return"},
+              "skip": {"type": "integer", "description": "Records to skip"},
+              "expand": {"type": "string", "description": "OData $expand"},
+              "inlinecount": {"type": "string", "description": "Count option"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "value": [
+              {
+                "BusinessPartner": "1000001",
+                "Customer": "C100001",
+                "Supplier": null,
+                "BusinessPartnerFullName": "Acme Corporation",
+                "BusinessPartnerName": "Acme Corporation",
+                "BusinessPartnerUUID": "550e8400-e29b-41d4-a716-446655440001",
+                "BusinessPartnerCategory": "2",
+                "OrganizationBPName1": "Acme Corporation",
+                "OrganizationBPName2": null,
+                "FirstName": null,
+                "LastName": null,
+                "SearchTerm1": "ACME",
+                "CreationDate": "/Date(1609459200000)/",
+                "LastChangeDate": "/Date(1735689600000)/",
+                "BusinessPartnerIsBlocked": false,
+                "IsMarkedForArchiving": false,
+                "to_BusinessPartnerAddress": [],
+                "to_BusinessPartnerTax": [{"TaxNumber1": "DE123456789"}],
+                "to_Customer": {"Customer": "C100001"},
+                "to_Supplier": null
+              },
+              {
+                "BusinessPartner": "1000002",
+                "Customer": "C100002",
+                "Supplier": null,
+                "BusinessPartnerFullName": "Acme Corp.",
+                "BusinessPartnerName": "Acme Corp.",
+                "BusinessPartnerUUID": "550e8400-e29b-41d4-a716-446655440002",
+                "BusinessPartnerCategory": "2",
+                "OrganizationBPName1": "Acme Corp.",
+                "OrganizationBPName2": "Global Division",
+                "FirstName": null,
+                "LastName": null,
+                "SearchTerm1": "ACME",
+                "CreationDate": "/Date(1640995200000)/",
+                "LastChangeDate": "/Date(1704067200000)/",
+                "BusinessPartnerIsBlocked": false,
+                "IsMarkedForArchiving": false,
+                "to_BusinessPartnerAddress": [],
+                "to_BusinessPartnerTax": [{"TaxNumber1": "DE123456789"}],
+                "to_Customer": {"Customer": "C100002"},
+                "to_Supplier": null
+              },
+              {
+                "BusinessPartner": "1000003",
+                "Customer": null,
+                "Supplier": "S200001",
+                "BusinessPartnerFullName": "Global Supplies GmbH",
+                "BusinessPartnerName": "Global Supplies GmbH",
+                "BusinessPartnerUUID": "550e8400-e29b-41d4-a716-446655440003",
+                "BusinessPartnerCategory": "2",
+                "OrganizationBPName1": "Global Supplies GmbH",
+                "OrganizationBPName2": null,
+                "FirstName": null,
+                "LastName": null,
+                "SearchTerm1": "GLOBSUP",
+                "CreationDate": "/Date(1577836800000)/",
+                "LastChangeDate": "/Date(1717200000000)/",
+                "BusinessPartnerIsBlocked": false,
+                "IsMarkedForArchiving": false,
+                "to_BusinessPartnerAddress": [],
+                "to_BusinessPartnerTax": [{"TaxNumber1": "DE987654321"}],
+                "to_Customer": null,
+                "to_Supplier": {"Supplier": "S200001"}
+              }
+            ]
+          }
+        },
+        "get_business_partner": {
+          "description": "Retrieve a single Business Partner entity by key",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "businesspartner": {"type": "string", "description": "Business Partner ID (max 10 chars)"},
+              "select": {"type": "string", "description": "Comma-separated property names"},
+              "expand": {"type": "string", "description": "OData $expand expression"}
+            },
+            "required": ["businesspartner"]
+          },
+          "mock_response": {
+            "BusinessPartner": "1000001",
+            "Customer": "C100001",
+            "Supplier": null,
+            "BusinessPartnerFullName": "Acme Corporation",
+            "BusinessPartnerName": "Acme Corporation",
+            "BusinessPartnerUUID": "550e8400-e29b-41d4-a716-446655440001",
+            "BusinessPartnerCategory": "2",
+            "OrganizationBPName1": "Acme Corporation",
+            "OrganizationBPName2": null,
+            "FirstName": null,
+            "LastName": null,
+            "SearchTerm1": "ACME",
+            "CreationDate": "/Date(1609459200000)/",
+            "LastChangeDate": "/Date(1735689600000)/",
+            "BusinessPartnerIsBlocked": false,
+            "IsMarkedForArchiving": false,
+            "to_BusinessPartnerAddress": [
+              {
+                "AddressID": "1",
+                "StreetName": "Main Street",
+                "HouseNumber": "100",
+                "CityName": "Berlin",
+                "PostalCode": "10115",
+                "Country": "DE"
+              }
+            ],
+            "to_BusinessPartnerTax": [{"TaxNumber1": "DE123456789"}],
+            "to_BuPaIdentification": [],
+            "to_Customer": {"Customer": "C100001"},
+            "to_Supplier": null
+          }
+        },
+        "list_customer": {
+          "description": "Retrieve a list of Customer entities",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {"type": "string", "description": "OData $filter expression"},
+              "select": {"type": "string", "description": "Comma-separated property names"},
+              "orderby": {"type": "string"},
+              "top": {"type": "integer"},
+              "skip": {"type": "integer"},
+              "expand": {"type": "string"},
+              "inlinecount": {"type": "string"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "value": [
+              {
+                "Customer": "C100001",
+                "AuthorizationGroup": null,
+                "BillingIsBlockedForCustomer": null,
+                "CreationDate": "/Date(1609459200000)/",
+                "CustomerAccountGroup": "KUNA",
+                "CustomerFullName": "Acme Corporation",
+                "CustomerName": "Acme Corporation",
+                "IsMarkedForDeletion": false
+              },
+              {
+                "Customer": "C100002",
+                "AuthorizationGroup": null,
+                "BillingIsBlockedForCustomer": null,
+                "CreationDate": "/Date(1640995200000)/",
+                "CustomerAccountGroup": "KUNA",
+                "CustomerFullName": "Acme Corp.",
+                "CustomerName": "Acme Corp.",
+                "IsMarkedForDeletion": false
+              }
+            ]
+          }
+        },
+        "list_supplier": {
+          "description": "Retrieve a list of Supplier entities",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "filter": {"type": "string", "description": "OData $filter expression"},
+              "select": {"type": "string"},
+              "orderby": {"type": "string"},
+              "top": {"type": "integer"},
+              "skip": {"type": "integer"},
+              "expand": {"type": "string"},
+              "inlinecount": {"type": "string"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "value": [
+              {
+                "Supplier": "S200001",
+                "AuthorizationGroup": null,
+                "CreationDate": "/Date(1577836800000)/",
+                "SupplierAccountGroup": "LIEF",
+                "SupplierFullName": "Global Supplies GmbH",
+                "SupplierName": "Global Supplies GmbH",
+                "IsMarkedForDeletion": false
+              },
+              {
+                "Supplier": "S200002",
+                "AuthorizationGroup": null,
+                "CreationDate": "/Date(1609459200000)/",
+                "SupplierAccountGroup": "LIEF",
+                "SupplierFullName": "Global Supply Solutions",
+                "SupplierName": "Global Supply Solutions",
+                "IsMarkedForDeletion": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "master-data-harmonization-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 1,
+    "total_tools": 4,
+    "generated_from": [
+      "mcp-spec-business-partner-list_business_partner.json",
+      "mcp-spec-business-partner-get_business_partner.json",
+      "mcp-spec-business-partner-list_customer.json",
+      "mcp-spec-business-partner-list_supplier.json"
+    ],
+    "generation_date": "2026-06-08"
+  }
+}
